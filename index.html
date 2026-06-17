@@ -15,6 +15,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
 
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
 <style>
   :root{
     --accent:#5c7a52;
@@ -110,11 +112,11 @@
   #ceremony h2{font-size:18px;color:var(--accent-dark);font-weight:700;margin:0 0 8px;}
   #ceremony .sub{font-size:14px;color:var(--sub);margin-bottom:36px;}
   #ceremony .sub .venue{display:block;margin-top:4px;}
-  table.cal{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px;}
+  table.cal{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px;margin-top:10px;}
   table.cal caption{font-size:15px;color:var(--accent-dark);font-weight:700;margin-bottom:18px;}
-  table.cal th{color:var(--sub);font-weight:400;padding:8px 0;font-size:12px;}
+  table.cal th{width:14.2857%;text-align:center;color:var(--sub);font-weight:400;padding:8px 0;font-size:12px;}
   table.cal th:first-child{color:#c98a8a;}
-  table.cal td{padding:9px 0;color:var(--text);}
+  table.cal td{width:14.2857%;text-align:center;padding:9px 0;color:var(--text);}
   table.cal td:first-child{color:#c98a8a;}
   table.cal td.dday{position:relative;}
   table.cal td.dday span{
@@ -432,7 +434,43 @@
     document.getElementById('app').scrollIntoView({behavior:'smooth'});
     window.scrollTo({top:0, behavior:'smooth'});
   }
+  // 카카오링크 SDK 초기화
+  if (window.Kakao && !Kakao.isInitialized()) {
+    Kakao.init('f12f3d2a75f8dfa472467595c364f833');
+  }
+
   function sharePage(){
+    if (window.Kakao && Kakao.isInitialized()) {
+      Kakao.Share.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '하영채 ❤ 이영주 결혼합니다',
+          description: '2026년 10월 25일 일요일 낮 12시 10분\n송도 메리빌리아 셀레스메리홀',
+          imageUrl: 'https://ycha222.github.io/wedding/images/share.jpg',
+          link: {
+            mobileWebUrl: 'https://ycha222.github.io/wedding/',
+            webUrl: 'https://ycha222.github.io/wedding/'
+          }
+        },
+        buttons: [
+          {
+            title: '청첩장 보기',
+            link: {
+              mobileWebUrl: 'https://ycha222.github.io/wedding/',
+              webUrl: 'https://ycha222.github.io/wedding/'
+            }
+          },
+          {
+            title: '위치 보기',
+            link: {
+              mobileWebUrl: 'https://map.kakao.com/link/search/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EA%B3%BC%ED%95%99%EB%A1%9C16%EB%B2%88%EA%B8%B8%2033-1',
+              webUrl: 'https://map.kakao.com/link/search/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EA%B3%BC%ED%95%99%EB%A1%9C16%EB%B2%88%EA%B8%B8%2033-1'
+            }
+          }
+        ]
+      });
+      return;
+    }
     const url = window.location.href;
     if (navigator.share){
       navigator.share({title:'하영채 ❤ 이영주 결혼합니다', url});
