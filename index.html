@@ -13,7 +13,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700&family=RIDIBatang&display=swap" rel="stylesheet">
+<style>@font-face{font-family:'Ownglyph_positive';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.1/Ownglyph_positive.woff2') format('woff2');font-weight:normal;font-display:swap;}</style>
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
@@ -63,10 +64,10 @@
     to{opacity:1;}
   }
   .eng-title{
-    font-family:'Dancing Script', cursive;
-    font-size:34px;
+    font-family:'Ownglyph_positive', cursive;
+    font-size:30px;
     color:var(--accent-dark);
-    line-height:1.4;
+    line-height:1.6;
     margin:0;
   }
   #cover .cover-img{
@@ -117,6 +118,7 @@
     margin:0 0 26px;
   }
   #greeting p.msg{
+    font-family:'RIDIBatang', serif;
     font-size:15px;
     line-height:2.05;
     color:var(--text);
@@ -126,6 +128,7 @@
   #greeting p.msg + p.msg{margin-top:24px;}
 
   /* ===== Calendar ===== */
+  #ceremony, #location, #account, .info-box, .accordion{font-family:'Noto Sans KR', sans-serif;}
   #ceremony h2{font-size:18px;color:var(--accent-dark);font-weight:700;margin:0 0 8px;}
   #ceremony .sub{font-size:14px;color:var(--sub);margin-bottom:36px;}
   #ceremony .sub .venue{display:block;margin-top:4px;}
@@ -281,7 +284,7 @@
   <!-- 커버 -->
   <section id="cover">
     <div class="welcome">
-      <p class="eng-title">Welcome<br>To our wedding</p>
+      <p class="eng-title">2026.10.25<br>영채 ♥ 영주, 결혼합니다.</p>
     </div>
     <img class="cover-img" src="images/cover.jpg" alt="하영채 이영주">
     <div class="date-line">
@@ -506,7 +509,7 @@
   // Welcome 텍스트 글자별 애니메이션
   (function(){
     const title = document.querySelector('#cover .eng-title');
-    const lines = ['Welcome', 'To our wedding'];
+    const lines = ['2026.10.25', '영채 ♥ 영주, 결혼합니다.'];
     const totalChars = lines.reduce((s, l) => s + l.length, 0); // 21
     const totalDuration = 3;
     const letterDuration = 0.5;
