@@ -69,13 +69,14 @@
     line-height:1.4;
     margin:0;
   }
-  #cover .eng-title{
-    animation:fadeInUp 1.8s ease both;
-    animation-delay:0.4s;
-  }
   #cover .cover-img{
-    animation:fadeIn 2s ease both;
+    animation:fadeIn 3s ease both;
     animation-delay:0.8s;
+  }
+  #cover .eng-title .letter{
+    display:inline-block;
+    opacity:0;
+    animation:fadeInUp 0.5s ease both;
   }
 
   /* ===== Cover ===== */
@@ -504,6 +505,28 @@
     if (diff > 0) el.textContent = `결혼식까지 D-${diff}`;
     else if (diff === 0) el.textContent = '오늘 결혼식이 있습니다';
     else el.textContent = '';
+  })();
+
+  // Welcome 텍스트 글자별 애니메이션
+  (function(){
+    const title = document.querySelector('#cover .eng-title');
+    const lines = ['Welcome', 'To our wedding'];
+    const totalChars = lines.reduce((s, l) => s + l.length, 0); // 21
+    const totalDuration = 3;
+    const letterDuration = 0.5;
+    const stagger = (totalDuration - letterDuration) / (totalChars - 1);
+    const startDelay = 0.8;
+    let html = '';
+    let idx = 0;
+    lines.forEach((line, li) => {
+      for (const ch of line) {
+        const delay = (startDelay + idx * stagger).toFixed(3);
+        html += `<span class="letter" style="animation-delay:${delay}s">${ch === ' ' ? '&nbsp;' : ch}</span>`;
+        idx++;
+      }
+      if (li < lines.length - 1) html += '<br>';
+    });
+    title.innerHTML = html;
   })();
 
   // 스크롤 페이드인
