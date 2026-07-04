@@ -58,6 +58,10 @@
     from{opacity:0;transform:translateY(24px);}
     to{opacity:1;transform:translateY(0);}
   }
+  @keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+  }
   .eng-title{
     font-family:'Dancing Script', cursive;
     font-size:34px;
@@ -68,6 +72,10 @@
   #cover .eng-title{
     animation:fadeInUp 1.8s ease both;
     animation-delay:0.4s;
+  }
+  #cover .cover-img{
+    animation:fadeIn 2s ease both;
+    animation-delay:0.8s;
   }
 
   /* ===== Cover ===== */
@@ -262,7 +270,7 @@
     cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12);
   }
 
-  .fade-in{opacity:0;transform:translateY(16px);transition:opacity .7s ease, transform .7s ease;}
+  .fade-in{opacity:0;transform:translateY(16px);transition:opacity 3s ease, transform 3s ease;}
   .fade-in.visible{opacity:1;transform:translateY(0);}
 </style>
 </head>
