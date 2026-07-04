@@ -54,12 +54,21 @@
     background:var(--line);
     margin:0 auto 28px;
   }
+  @keyframes fadeInUp{
+    from{opacity:0;transform:translateY(24px);}
+    to{opacity:1;transform:translateY(0);}
+  }
   .eng-title{
     font-family:'Dancing Script', cursive;
     font-size:34px;
     color:var(--accent-dark);
     line-height:1.4;
     margin:0;
+  }
+  #cover .eng-title{
+    opacity:0;
+    animation:fadeInUp 1.8s ease forwards;
+    animation-delay:0.4s;
   }
 
   /* ===== Cover ===== */
