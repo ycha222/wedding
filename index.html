@@ -13,8 +13,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700&family=RIDIBatang&display=swap" rel="stylesheet">
-<style>@font-face{font-family:'Ownglyph_positive';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.1/Ownglyph_positive.woff2') format('woff2');font-weight:normal;font-display:swap;}</style>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');font-weight:500;font-display:swap;}
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraBold.woff2') format('woff2');font-weight:800;font-display:swap;}
+</style>
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
@@ -64,7 +67,8 @@
     to{opacity:1;}
   }
   .eng-title{
-    font-family:'Ownglyph_positive', cursive;
+    font-family:'Suit', sans-serif;
+    font-weight:800;
     font-size:30px;
     color:var(--accent-dark);
     line-height:1.6;
@@ -91,6 +95,8 @@
   }
   #cover .date-line{
     padding:30px 20px 50px;
+    font-family:'Suit', sans-serif;
+    font-weight:500;
     font-size:15px;
     letter-spacing:0.5px;
     color:var(--text);
@@ -104,21 +110,25 @@
 
   /* ===== Greeting ===== */
   #greeting .names{
+    font-family:'Suit', sans-serif;
+    font-weight:500;
     font-size:14px;
     color:var(--sub);
     line-height:2.1;
     margin-bottom:34px;
     letter-spacing:0.2px;
   }
-  #greeting .names b{color:var(--text);font-weight:700;}
+  #greeting .names b{color:var(--text);font-weight:500;}
   #greeting h2{
+    font-family:'Suit', sans-serif;
+    font-weight:500;
     font-size:18px;
     color:var(--accent-dark);
-    font-weight:700;
     margin:0 0 26px;
   }
   #greeting p.msg{
-    font-family:'RIDIBatang', serif;
+    font-family:'Suit', sans-serif;
+    font-weight:500;
     font-size:15px;
     line-height:2.05;
     color:var(--text);
