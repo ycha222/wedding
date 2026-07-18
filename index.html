@@ -13,8 +13,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700&family=Ownglyph_positive&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'Ownglyph_positive';src:url('Ownglyph_positive.ttf') format('truetype');font-weight:400;font-display:swap;}
 @font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');font-weight:500;font-display:swap;}
 </style>
 
@@ -67,6 +68,7 @@
   }
   .eng-title{
     font-family:'Ownglyph_positive', cursive;
+    font-weight:400;
     font-size:30px;
     color:var(--accent-dark);
     line-height:1.6;
@@ -269,9 +271,9 @@
 
   /* ===== Footer ===== */
   #footer{padding:50px 30px 60px;background:#fff;}
-  #footer .names-en{font-family:'Dancing Script',cursive;font-size:24px;color:var(--accent-dark);margin-bottom:8px;}
-  #footer .date-small{font-size:12px;color:var(--sub);}
-  #footer .thanks{margin-top:24px;font-size:13px;color:var(--sub);line-height:1.8;}
+  #footer .names-en{font-family:'Suit',sans-serif;font-weight:500;font-size:24px;color:var(--accent-dark);margin-bottom:8px;}
+  #footer .date-small{font-family:'Suit',sans-serif;font-weight:500;font-size:12px;color:var(--sub);}
+  #footer .thanks{font-family:'Suit',sans-serif;font-weight:500;margin-top:24px;font-size:13px;color:var(--sub);line-height:1.8;}
 
   /* Floating buttons */
   .floating{position:fixed;right:calc(50% - 240px + 16px);bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:50;}
@@ -352,7 +354,8 @@
 
     <div class="info-box">
       <h3>주차 안내</h3>
-      <p>주차 안내는 추후 업데이트됩니다.</p>
+      <p>트리플스트리트 A동~D동 지하주차장 (5시간 무료)<br>
+      제 2주차장 : 웨딩홀 건너편 송도 테크노파크 IT센터 임시주차장</p>
     </div>
   </section>
 
