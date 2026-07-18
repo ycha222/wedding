@@ -21,6 +21,15 @@
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
+<!-- 네이버 지도: 아래 NAVER_MAP_KEY_HERE 를 발급받은 키로 교체하세요 (키 없으면 구글 지도로 자동 대체) -->
+<script>
+  window.navermap_authFailure = function () {
+    var el = document.getElementById('naverMap');
+    if (el) el.innerHTML = '<iframe loading="lazy" style="width:100%;height:100%;border:0;" src="https://www.google.com/maps?q=%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84+%EC%86%A1%EB%8F%84&output=embed"></iframe>';
+  };
+</script>
+<script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=opxn7kgag9"></script>
+
 <style>
   :root{
     --accent:#5c7a52;
@@ -177,9 +186,17 @@
     border-radius:6px;
     margin-bottom:16px;
   }
-  .map-btns{display:flex;gap:8px;margin-bottom:34px;}
+  #location #naverMap{
+    width:100%;
+    height:220px;
+    border-radius:6px;
+    margin-bottom:16px;
+    overflow:hidden;
+    background:#eef0f2;
+  }
+  .map-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px;}
   .map-btns a{
-    flex:1;
+    flex:1 1 calc(50% - 4px);
     display:block;
     padding:11px 0;
     font-size:13px;
@@ -308,8 +325,8 @@
   <!-- 인사말 -->
   <section id="greeting" class="fade-in">
     <p class="names">
-      <b>[신랑 아버지 성함]</b> · <b>[신랑 어머니 성함]</b> 의 아들 <b>영채</b><br>
-      <b>[신부 아버지 성함]</b> · <b>[신부 어머니 성함]</b> 의 딸 <b>영주</b>
+      <b>하중경</b> · <b>전지현</b> 의 아들 <b>영채</b><br>
+      <b>이경열</b> · <b>최은아</b> 의 딸 <b>영주</b>
     </p>
     <h2>소중한 분들을 초대합니다.</h2>
     <p class="msg"><b>영</b>원이라는 약속 위에<br><b>채</b>워갈 두 사람의 아름다운 이야기.</p>
@@ -344,12 +361,13 @@
     <p class="venue-floor">셀레스메리홀</p>
     <p class="venue-addr">인천광역시 연수구 송도과학로16번길 33-1</p>
 
-    <iframe loading="lazy" src="https://www.google.com/maps?q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EA%B3%BC%ED%95%99%EB%A1%9C16%EB%B2%88%EA%B8%B8%2033-1&output=embed"></iframe>
+    <div id="naverMap"></div>
 
     <div class="map-btns">
-      <a target="_blank" href="tmap://search?name=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EA%B3%BC%ED%95%99%EB%A1%9C16%EB%B2%88%EA%B8%B8%2033-1">티맵</a>
-      <a target="_blank" href="https://map.kakao.com/link/search/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EA%B3%BC%ED%95%99%EB%A1%9C16%EB%B2%88%EA%B8%B8%2033-1">카카오내비</a>
-      <a target="_blank" href="https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EA%B3%BC%ED%95%99%EB%A1%9C16%EB%B2%88%EA%B8%B8%2033-1">네이버지도</a>
+      <a target="_blank" href="tmap://search?name=%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84">티맵</a>
+      <a target="_blank" href="https://place.map.kakao.com/525830344">카카오내비</a>
+      <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84+%EC%86%A1%EB%8F%84">구글지도</a>
+      <a target="_blank" href="https://map.naver.com/p/search/%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84">네이버지도</a>
     </div>
 
     <div class="info-box">
@@ -377,21 +395,25 @@
     <details class="accordion">
       <summary>신랑측 <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 6L11 1" stroke="#8a8a8a" stroke-width="1.5"/></svg></summary>
       <div class="acc-body">
-        <div class="acc-row"><span class="who">하영채</span><span>계좌번호는 추후 안내드리겠습니다.</span></div>
+        <div class="acc-row"><span class="who">하영채 (신랑)</span><span>신한은행 110321854540</span><button class="copy-btn" onclick="copyAccount('110321854540')">복사</button></div>
+        <div class="acc-row"><span class="who">하중경 (아버지)</span><span>추후 안내</span></div>
+        <div class="acc-row"><span class="who">전지현 (어머니)</span><span>추후 안내</span></div>
       </div>
     </details>
 
     <details class="accordion">
       <summary>신부측 <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1L6 6L11 1" stroke="#8a8a8a" stroke-width="1.5"/></svg></summary>
       <div class="acc-body">
-        <div class="acc-row"><span class="who">이영주</span><span>계좌번호는 추후 안내드리겠습니다.</span></div>
+        <div class="acc-row"><span class="who">이영주 (신부)</span><span>우리은행 1002753798805</span><button class="copy-btn" onclick="copyAccount('1002753798805')">복사</button></div>
+        <div class="acc-row"><span class="who">이경열 (아버지)</span><span>농협은행 00302210720</span><button class="copy-btn" onclick="copyAccount('00302210720')">복사</button></div>
+        <div class="acc-row"><span class="who">최은아 (어머니)</span><span>농협은행 15212346037</span><button class="copy-btn" onclick="copyAccount('15212346037')">복사</button></div>
       </div>
     </details>
   </section>
 
   <!-- 푸터 -->
   <section id="footer">
-    <p class="names-en">Young Chae &amp; Young Joo</p>
+    <p class="names-en">Youngchae &amp; Youngjoo</p>
     <p class="date-small">2026. 10. 25</p>
     <p class="thanks">저희 두 사람의 새로운 시작을<br>축복해 주셔서 감사합니다.</p>
   </section>
@@ -538,6 +560,36 @@
     });
     title.innerHTML = html;
   })();
+
+  // 네이버 지도 (키 없거나 인증 실패 시 구글 지도로 자동 대체)
+  (function(){
+    var el = document.getElementById('naverMap');
+    if (!el) return;
+    function fallback(){
+      if (el.dataset.done) return;
+      el.dataset.done = '1';
+      el.innerHTML = '<iframe loading="lazy" style="width:100%;height:100%;border:0;" src="https://www.google.com/maps?q=%EB%A9%94%EB%A6%AC%EB%B9%8C%EB%A6%AC%EC%95%84+%EC%86%A1%EB%8F%84&output=embed"></iframe>';
+    }
+    try {
+      if (window.naver && naver.maps) {
+        var pos = new naver.maps.LatLng(37.381552, 126.659550);
+        var map = new naver.maps.Map('naverMap', { center: pos, zoom: 16 });
+        var marker = new naver.maps.Marker({ position: pos, map: map });
+        var info = new naver.maps.InfoWindow({
+          content: '<div style="padding:6px 10px;font-size:13px;font-family:sans-serif;white-space:nowrap;">메리빌리아</div>'
+        });
+        info.open(map, marker);
+        el.dataset.done = '1';
+      } else {
+        fallback();
+      }
+    } catch (e) { fallback(); }
+  })();
+
+  // 계좌번호 복사
+  function copyAccount(num){
+    navigator.clipboard.writeText(num).then(() => alert('계좌번호가 복사되었습니다.'));
+  }
 
   // 스크롤 페이드인
   const observer = new IntersectionObserver((entries) => {
